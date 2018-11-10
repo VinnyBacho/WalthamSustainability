@@ -7,3 +7,11 @@
 .btn-success {
   background-color: #2cc1a1 !important;
 }
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border: 1px solid black;
+}
+
