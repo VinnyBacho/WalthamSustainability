@@ -10,9 +10,11 @@ li {
     display: inline-block;
     padding-left:
     padding-right: px;
-    color: "#2cc1a1 !important";
+    color: "#2cc1a1";
 }
 
  #logo {
     color: green;
+    font-size: 40px;
+    font-family:
 }
