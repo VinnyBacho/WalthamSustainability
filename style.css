@@ -16,5 +16,13 @@ li {
  #logo {
     color: green;
     font-size: 40px;
-    font-family:
+    font-family: 'Acme', sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+#aboutus-container {
+ margin: auto;   
 }
