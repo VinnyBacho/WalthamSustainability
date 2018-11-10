@@ -15,14 +15,23 @@ li {
 #logo {
   color: green;
   font-size: 40px;
-  font-family: ;
+  font-family: "Acme", sans-serif;
 }
+
+h1 {
+  text-align: center;
+}
+
+#aboutus-container {
+  margin: auto;
+}
+
 .body {
   background-color: #2cc1a1;
 }
 /* .container {
-    background-color: #2cc1a1;
-  } */
+      background-color: #2cc1a1;
+    } */
 .btn-success {
   background-color: #2cc1a1 !important;
 }
