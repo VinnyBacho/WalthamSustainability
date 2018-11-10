@@ -22,6 +22,9 @@ table {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+}
+
+table, th, tr {
     border: 1px solid black;
 }
 
