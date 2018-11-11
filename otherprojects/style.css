@@ -58,11 +58,11 @@ a:hover {
   background-color: #00a896;
   padding-bottom: 0 !important;
 }
-.oops {
+.topTitle {
   text-align: center;
   color: white;
-  padding-top: 50px;
-  padding-bottom: 25px;
+  padding-top: 15px;
+  padding-bottom: 5px;
 }
 .body {
   background-color: #2cc1a1;
@@ -72,5 +72,22 @@ a:hover {
   color: 4A4949;
   font-size: 12px;
     padding: 20px;
-
+}
+.infoTitle1 {
+  text-align: left;
+  color: white;
+  padding-left: 25px;
+}
+img{
+    padding: 10px;
+    padding-bottom: 50px;
+}
+p{
+    padding: 10px;
+}
+h1{
+    font-size: 25px;
+}
+h2{
+    padding: 2px;
 }
