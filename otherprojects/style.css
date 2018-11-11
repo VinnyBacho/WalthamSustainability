@@ -72,5 +72,18 @@ a:hover {
   color: 4A4949;
   font-size: 12px;
     padding: 20px;
-
+}
+.infoTitle1 {
+  text-align: left;
+  color: white;
+  padding-left: 25px;
+}
+img{
+    padding: 10px;
+}
+p{
+    padding: 10px;
+}
+h1{
+    padding: 2px;
 }
