@@ -66,6 +66,7 @@ body {
   height: 75%;
   margin: 100px;
   margin-top: 25px;
+  margin-bottom: 25px;
 }
 /* Optional: Makes the sample page fill the window. */
 
@@ -90,4 +91,7 @@ body {
   padding-top: 25px;
   text-align: center;
   color: white;
+}
+.info p {
+  font-size: 25px;
 }

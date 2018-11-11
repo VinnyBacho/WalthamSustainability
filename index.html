@@ -13,6 +13,16 @@
       rel="stylesheet"
     />
     <title>Waltham Green Initiative</title>
+    <!-- <script src="test.js"></script> -->
+    <script>
+      async function fetchTopFive(address) {
+        const URL = `http://129.64.142.68:8081/address?address=` + address;
+        const fetchResult = fetch(URL, { method: "GET", mode: "no-cors" });
+        const response = await fetchResult;
+        const jsonData = await response.json();
+        console.log(jsonData);
+      }
+    </script>
   </head>
   <body class="body">
     <div class="navbar">
@@ -41,18 +51,25 @@
               <i class="fas fa-search h4 text-body"></i>
             </div>
             <!-- end of col -->
-            <form>
+            <form name="searchForm" action="results/index.html" method="GET">
               <div class="col">
                 <input
                   class="form-control form-control-lg form-control-borderless"
-                  type="search"
+                  type="text"
                   placeholder="Search your address"
                   style="border:none"
+                  value=""
+                  name="query"
                 />
               </div>
               <!-- end of col -->
               <div class="col-auto">
-                <button class="btn btn-lg btn-success" type="submit">
+                <button
+                  class="btn btn-lg btn-success"
+                  type="submit"
+                  value="click"
+                  onclick="fetchTopFive(this.form)"
+                >
                   Search
                 </button>
               </div>
@@ -63,7 +80,7 @@
       </div>
       <!-- end of col -->
     </div>
-    
+
     <br />
     <br />
     <br />
