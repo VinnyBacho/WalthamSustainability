@@ -67,3 +67,10 @@ a:hover {
 .body {
   background-color: #2cc1a1;
 }
+.subtext {
+  text-align: center;
+  color: 4A4949;
+  font-size: 12px;
+    padding: 20px;
+
+}
