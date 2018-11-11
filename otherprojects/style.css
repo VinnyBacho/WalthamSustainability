@@ -58,10 +58,10 @@ a:hover {
   background-color: #00a896;
   padding-bottom: 0 !important;
 }
-.oops {
+.topTitle {
   text-align: center;
   color: white;
-  padding-top: 5px;
+  padding-top: 15px;
   padding-bottom: 5px;
 }
 .body {
