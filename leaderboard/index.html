@@ -2,17 +2,40 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>District Leadership Board</title>
+    <title>Street Leaderboard</title>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
-
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Acme"
+      rel="stylesheet"
+    />
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" type="text/css" href="main.css" />
   </head>
   <body>
+    <div class="navbar">
+      <ul>
+        <li class="logo">WGP</li>
+        <li><a class="active page" href="../index.html">Home</a></li>
+        <li><a href="index.html">Leader Board </a></li>
+        <li><a href="../townUsageMap/index.html">Town Usage Map</a></li>
+        <li><a href="OtherGreenProjects.html">Other Green Projects</a></li>
+      </ul>
+    </div>
     <section>
       <h1>Energy Saving Leader Board</h1>
       <div class="tbl-header">
@@ -20,13 +43,9 @@
           <thead>
             <tr>
               <th>Rank</th>
-              <th>House ID</th>
               <th>Address</th>
-              <th>Street</th>
-              <th>Kilowatts Per Hour</th>
-              <th>Kilowatts Per Month</th>
-              <th>Gallons Per Day</th>
-              <th>Gallons Per House</th>
+              <th>Kilowatt Hours Per Month</th>
+              <th>Gallons in a Day Per House</th>
             </tr>
           </thead>
         </table>
@@ -36,11 +55,8 @@
           <tbody>
             <tr>
               <td>1</td>
-              <td>2190</td>
               <td>175 Forest Street</td>
-              <td>89</td>
               <td>324</td>
-              <td>92</td>
               <td>3432</td>
             </tr>
           </tbody>
