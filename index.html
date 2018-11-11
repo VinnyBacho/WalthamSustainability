@@ -16,23 +16,33 @@
     <!-- <script src="test.js"></script> -->
     <script>
       function fetchTopFive(address) {
-        try {
-          console.log(address);
-          const URL = `http://129.64.142.68:8081/address?address=` + address;
-          console.log(URL);
-          var xhr = new XMLHttpRequest();
-          xhr.onreadystatechange = function() {
-            if (xhr.readyState == XMLHttpRequest.DONE) {
-              console.log(xhr);
-              console.log(JSON.parse(xhr.response));
-              console.log(JSON.parse(xhr.responseText));
-            }
-          };
-          xhr.open("GET", URL, true);
-          xhr.send(null);
-        } catch (e) {
-          console.log(e);
-        }
+        console.log(address);
+
+        const URL = `http://129.64.154.173:8081/address?address=` + address;
+
+        console.log(URL);
+
+        var xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState == XMLHttpRequest.DONE) {
+            console.log("Ready State:");
+            console.log("status code is 4");
+            console.log(xhr.getResponseHeader);
+            console.log("status = ", xhr.statusText);
+
+            // console.log(xhr);
+            console.log(JSON.parse(xhr.response));
+            console.log(JSON.parse(xhr.responseText));
+          }
+        };
+
+        xhr.open("GET", URL, true);
+
+        xhr.onerror = function(e) {
+          console.error(xhr.status);
+        };
+        xhr.send(null);
       }
     </script>
   </head>
@@ -48,6 +58,7 @@
       </ul>
     </div>
     <h1 class="ourtitle">Waltham Green Initiative</h1>
+    <div id="result"></div>
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
@@ -63,29 +74,31 @@
               <i class="fas fa-search h4 text-body"></i>
             </div>
             <!-- end of col -->
-            <form name="searchForm" action="results/index.html" method="GET">
-              <div class="col">
-                <input
-                  class="form-control form-control-lg form-control-borderless"
-                  type="text"
-                  placeholder="Search your address"
-                  style="border:none"
-                  value=""
-                  name="query"
-                />
-              </div>
-              <!-- end of col -->
-              <div class="col-auto">
-                <button
-                  class="btn btn-lg btn-success"
-                  type="submit"
-                  value="click"
-                  onclick="fetchTopFive(encodeURIComponent(query.value))"
-                >
-                  Search
-                </button>
-              </div>
-            </form>
+            <!--
+              <form name="searchForm" action="results/index.html" method="GET">
+            -->
+            <div class="col">
+              <input
+                class="form-control form-control-lg form-control-borderless"
+                type="text"
+                placeholder="Search your address"
+                style="border:none"
+                value=""
+                name="query"
+              />
+            </div>
+            <!-- end of col -->
+            <div class="col-auto">
+              <button
+                class="btn btn-lg btn-success"
+                type="button"
+                value="click"
+                onclick="fetchTopFive(encodeURIComponent(query.value))"
+              >
+                Search
+              </button>
+            </div>
+            <!-- </form> -->
             <!-- end of col -->
           </div>
         </form>
@@ -100,7 +113,11 @@
     <div class="aboutus">
       <h3>About Us</h3>
       <p>
-        This web app has the purpose of shaming how inefficient citizens of Waltham are in being sustainable. With the use of this, our team has been able to create a leaderboard that will have a rank of top 10 streets that have the least energy and water consumption in Waltham in order to incentivise people into being more environmentally friendly. 
+        This web app has the purpose of shaming how inefficient citizens of
+        Waltham are in being sustainable. With the use of this, our team has
+        been able to create a leaderboard that will have a rank of top 10
+        streets that have the least energy and water consumption in Waltham in
+        order to incentivise people into being more environmentally friendly.
       </p>
     </div>
     <div class="townsymbol"><img src="logo.png" /></div>
