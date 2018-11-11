@@ -77,17 +77,30 @@ a:hover {
   text-align: left;
   color: white;
   padding-left: 25px;
+  border: 1px solid white;
+}
+
+.infoTitle1 p {
+    font-size: 20px;
 }
 img{
     padding: 10px;
     padding-bottom: 50px;
+    padding-right: 30px;
 }
 p{
     padding: 10px;
 }
-h1{
-    font-size: 25px;
+
+.topTitle h1 {
+    font-size: 50px;
 }
+
 h2{
     padding: 2px;
+}
+
+body{
+    padding-left: 10%;
+    padding-right: 10%;
 }
