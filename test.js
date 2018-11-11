@@ -19,3 +19,17 @@ function search(form) {
     console.log("error");
   }
 }
+
+async function fetchTopFive(address) {
+  try {
+    const URL = `http://129.64.142.68:8081/address?address=` + address;
+    const fetchResult = fetch(URL, { mode: "no-cors" });
+    console.log("1");
+    const response = await fetchResult;
+    console.log("2");
+    const jsonData = await response.text();
+    console.log("3");
+  } catch (e) {
+    console.log(e);
+  }
+}
