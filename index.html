@@ -13,27 +13,36 @@
       rel="stylesheet"
     />
     <title>Waltham Green Project</title>
-    <!-- <script src="test.js"></script> -->
     <script>
       function fetchTopFive(address) {
-        console.log(address);
+        const URL = `http://141.133.168.148:8081/address?address=` + address;
 
-        const URL = `http://129.64.154.173:8081/address?address=` + address;
+        function createCORSRequest(method, url) {
+          var xhr = new XMLHttpRequest();
+          if ("withCredentials" in xhr) {
+            // Check if the XMLHttpRequest object has a "withCredentials" property.
+            // "withCredentials" only exists on XMLHTTPRequest2 objects.
+            xhr.open(method, url, true);
+          } else if (typeof XDomainRequest != "undefined") {
+            // Otherwise, check if XDomainRequest.
+            // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+            xhr = new XDomainRequest();
+            xhr.open(method, url);
+          } else {
+            // Otherwise, CORS is not supported by the browser.
+            xhr = null;
+          }
+          return xhr;
+        }
 
-        console.log(URL);
-
-        var xhr = new XMLHttpRequest();
+        var xhr = createCORSRequest("GET", URL);
+        if (!xhr) {
+          throw new Error("CORS not supported");
+        }
 
         xhr.onreadystatechange = function() {
           if (xhr.readyState == XMLHttpRequest.DONE) {
-            console.log("Ready State:");
-            console.log("status code is 4");
-            console.log(xhr.getResponseHeader);
-            console.log("status = ", xhr.statusText);
-
-            // console.log(xhr);
             console.log(JSON.parse(xhr.response));
-            console.log(JSON.parse(xhr.responseText));
           }
         };
 
