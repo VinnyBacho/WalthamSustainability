@@ -99,3 +99,16 @@ img {
   outline: none;
   box-shadow: none;
 }
+
+.results {
+  background-color: white !important;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 50px;
+}
+
+#gallons,
+#kilowatts {
+  text-align: center;
+  font-size: 3em;
+}

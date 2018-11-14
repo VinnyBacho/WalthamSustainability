@@ -13,49 +13,6 @@
       rel="stylesheet"
     />
     <title>Waltham Green Project</title>
-    <script>
-      function fetchAddress(address) {
-        const URL = `http://141.133.168.148:8081/address?address=` + address;
-
-        function createCORSRequest(method, url) {
-          var xhr = new XMLHttpRequest();
-          if ("withCredentials" in xhr) {
-            // Check if the XMLHttpRequest object has a "withCredentials" property.
-            // "withCredentials" only exists on XMLHTTPRequest2 objects.
-            xhr.open(method, url, true);
-          } else if (typeof XDomainRequest != "undefined") {
-            // Otherwise, check if XDomainRequest.
-            // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
-            xhr = new XDomainRequest();
-            xhr.open(method, url);
-          } else {
-            // Otherwise, CORS is not supported by the browser.
-            xhr = null;
-          }
-          return xhr;
-        }
-
-        var xhr = createCORSRequest("GET", URL);
-        if (!xhr) {
-          throw new Error("CORS not supported");
-        }
-
-        xhr.onreadystatechange = function() {
-          if (xhr.readyState == XMLHttpRequest.DONE) {
-            try {
-              console.log(JSON.parse(xhr.response));
-            } catch {}
-          }
-        };
-
-        xhr.open("GET", URL, true);
-
-        xhr.onerror = function(e) {
-          console.error(xhr.status);
-        };
-        xhr.send(null);
-      }
-    </script>
   </head>
   <body class="body">
     <div class="navbar">
@@ -79,7 +36,11 @@
 
     <div class="row justify-content-center">
       <div class="col-12 col-md-10 col-lg-8">
-        <form class="card card-sm">
+        <form
+          action="#"
+          onSubmit="return fetchAddress(encodeURIComponent(query.value))"
+          class="card card-sm"
+        >
           <div class="card-body row no-gutters align-items-center">
             <div class="col-auto">
               <i class="fas fa-search h4 text-body"></i>
@@ -116,7 +77,10 @@
       </div>
       <!-- end of col -->
     </div>
-
+    <div class="results">
+      <div><p id="gallons"></p></div>
+      <div><p id="kilowatts"></p></div>
+    </div>
     <br />
     <br />
     <br />
@@ -132,5 +96,54 @@
       </p>
     </div>
     <div class="townsymbol"><img src="logo.png" /></div>
+    <script>
+      function fetchAddress(address) {
+        const URL = `http://141.133.168.148:8081/address?address=` + address;
+
+        function createCORSRequest(method, url) {
+          var xhr = new XMLHttpRequest();
+          if ("withCredentials" in xhr) {
+            // Check if the XMLHttpRequest object has a "withCredentials" property.
+            // "withCredentials" only exists on XMLHTTPRequest2 objects.
+            xhr.open(method, url, true);
+          } else if (typeof XDomainRequest != "undefined") {
+            // Otherwise, check if XDomainRequest.
+            // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+            xhr = new XDomainRequest();
+            xhr.open(method, url);
+          } else {
+            // Otherwise, CORS is not supported by the browser.
+            xhr = null;
+          }
+          return xhr;
+        }
+
+        var xhr = createCORSRequest("GET", URL);
+        if (!xhr) {
+          throw new Error("CORS not supported");
+        }
+
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState == XMLHttpRequest.DONE) {
+            response = JSON.parse(xhr.response);
+            document.getElementById("gallons").innerHTML =
+              "You use " +
+              response.gallonsPerDayPerHouse +
+              " gallons of water per day";
+            document.getElementById("kilowatts").innerHTML =
+              "You use " +
+              response.kilowattsPerHourPerMonth +
+              " kilowatts of electricity per day";
+          }
+        };
+
+        xhr.open("GET", URL, true);
+
+        xhr.onerror = function(e) {
+          console.error(xhr.status);
+        };
+        xhr.send(null);
+      }
+    </script>
   </body>
 </html>
