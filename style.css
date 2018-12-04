@@ -102,13 +102,16 @@ img {
 
 .results {
   background-color: white !important;
-  margin-left: 25%;
-  margin-right: 25%;
+  margin-left: 20%;
+  margin-right: 20%;
   margin-top: 50px;
+  border-radius: 15px;
 }
 
 #gallons,
-#kilowatts {
+#kilowatts,
+#gallonsExplanation,
+#kilowattsExplanation {
   text-align: center;
-  font-size: 3em;
+  font-size: 2em;
 }

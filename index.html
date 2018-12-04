@@ -80,6 +80,8 @@
     <div class="results">
       <div><p id="gallons"></p></div>
       <div><p id="kilowatts"></p></div>
+      <div><p id="gallonsExplanation"></p></div>
+      <div><p id="kilowattsExplanation"></p></div>
     </div>
     <br />
     <br />
@@ -98,7 +100,7 @@
     <div class="townsymbol"><img src="logo.png" /></div>
     <script>
       function fetchAddress(address) {
-        const URL = `http://141.133.168.148:8081/address?address=` + address;
+        const URL = `http://141.133.168.67:8081/address?address=` + address;
 
         function createCORSRequest(method, url) {
           var xhr = new XMLHttpRequest();
@@ -127,13 +129,47 @@
           if (xhr.readyState == XMLHttpRequest.DONE) {
             response = JSON.parse(xhr.response);
             document.getElementById("gallons").innerHTML =
-              "You use " +
+              "You use <strong>" +
               response.gallonsPerDayPerHouse +
-              " gallons of water per day";
+              "</strong> gallons of water ";
+            // response.kilowattsPerHourPerMonth +
+            // " kilowatts of electricty per day.";
             document.getElementById("kilowatts").innerHTML =
-              "You use " +
+              "and <strong>" +
               response.kilowattsPerHourPerMonth +
-              " kilowatts of electricity per day";
+              "</strong> kilowatts of electricity per day.";
+            var gallonDifference = response.gallonsPerDayPerHouse - 60;
+            var kilowattDifference = Math.round(
+              response.kilowattsPerHourPerMonth / 30 - 20.9
+            );
+            if (gallonDifference > 0) {
+              document.getElementById("gallonsExplanation").innerHTML =
+                "That is <strong><span style='color: red';>" +
+                gallonDifference +
+                " more</span></strong> gallons and ";
+            } else if (gallonDifference < 0) {
+              document.getElementById("gallonsExplanation").innerHTML =
+                "That is <strong><span style='color: #2cc1a1;'>" +
+                gallongDifference * -1 +
+                " less</span></strong> gallons and ";
+            } else {
+              document.getElementById("gallonExplanation").innerHTML =
+                "That is the <strong>same</strong> amount of water and ";
+            }
+            if (kilowattDifference > 0) {
+              document.getElementById("kilowattsExplanation").innerHTML =
+                "<strong><span style='color: red';>" +
+                kilowattDifference +
+                " more</span></strong> kilowatts per day than the average person in Waltham.";
+            } else if (kilowattDifference < 0) {
+              document.getElementById("kilowattsExplanation").innerHTML =
+                "<strong><span style='color: #2cc1a1;'>" +
+                kilowattDifference * -1 +
+                " less</span></strong> kilowatts per day than the average person in Waltham.";
+            } else {
+              document.getElementById("kilowattsExplanation").innerHTML =
+                "the <strong>same</strong> amount of kilowatts per day as the average person in Waltham.";
+            }
           }
         };
 
